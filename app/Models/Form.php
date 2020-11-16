@@ -9,5 +9,4 @@ class Form extends Model
     protected $table = "form";
     public $timestamps = true;
     protected $guarded = [];
-    protected $primaryKey = 'recode_id';
 }

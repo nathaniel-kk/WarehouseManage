@@ -151,4 +151,54 @@ class Management extends Model
             return null;
         }
     }
+
+    Public static function hwc_fillPurchaseOrderDis(){
+        try {
+            $data = self::where('type',1)
+                ->select('management_id')
+                ->get();
+            return $data;
+        } catch (\Exception $e) {
+            logError('进货单填写普管编号下拉框展示错误', [$e->getMessage()]);
+            return null;
+        }
+    }
+
+    public static function hwc_fillPurchaseOrderLink($management_id){
+        try {
+            $data = self::where('type',1)
+                ->where('management_id',$management_id)
+                ->select('management','phone')
+                ->get();
+            return $data;
+        } catch (\Exception $e) {
+            logError('进货单填写普管工号名字电话联动展示错误', [$e->getMessage()]);
+            return null;
+        }
+    }
+
+    public static function hwc_tranPurchaseOrderDropDis($warehouse_name){
+        try {
+            $data = self::where('type',1)
+                ->where('warehouse_name',$warehouse_name)
+                ->select('management')
+                ->get();
+            return $data;
+        } catch (\Exception $e) {
+            logError('调货单填写仓库管理员姓名下拉框展示错误', [$e->getMessage()]);
+            return null;
+        }
+    }
+
+    public static function hwc_tranPurchaseOrder1($management){
+        try {
+            $data = self::where('type',1)
+                ->where('management',$management)
+                ->pluck('management_id')[0];
+            return $data;
+        } catch (\Exception $e) {
+            logError('调货单填写错误', [$e->getMessage()]);
+            return null;
+        }
+    }
 }
