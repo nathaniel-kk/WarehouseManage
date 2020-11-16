@@ -152,6 +152,16 @@ class Management extends Model
         }
     }
 
+    public static function dc_getwarehouse($id){
+        try {
+            $date = self::where('management_id',$id)
+                ->select('warehouse_name')
+                ->get();
+            return $date;
+        }catch (\Exception $e){
+            logError('获取对应仓库名错误', [$e->getMessage()]);
+        }
+    }
     Public static function hwc_fillPurchaseOrderDis(){
         try {
             $data = self::where('type',1)
@@ -160,6 +170,18 @@ class Management extends Model
             return $data;
         } catch (\Exception $e) {
             logError('进货单填写普管编号下拉框展示错误', [$e->getMessage()]);
+            return null;
+        }
+    }
+
+    public static function dc_getname($id){
+        try {
+            $date = self::where('management_id',$id)
+                ->select('management_name')
+                ->get();
+            return $date;
+        }catch (\Exception $e){
+            logError('获取管理员名错误', [$e->getMessage()]);
             return null;
         }
     }
