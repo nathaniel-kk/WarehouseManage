@@ -151,4 +151,29 @@ class Management extends Model
             return null;
         }
     }
+
+    public static function dc_getwarehouse($id){
+        try {
+            $date = self::where('management_id',$id)
+                ->select('warehouse_name')
+                ->get();
+            return $date;
+        }catch (\Exception $e){
+            logError('获取对应仓库名错误', [$e->getMessage()]);
+            return null;
+        }
+    }
+
+    public static function dc_getname($id){
+        try {
+            $date = self::where('management_id',$id)
+                ->select('management_name')
+                ->get();
+            return $date;
+        }catch (\Exception $e){
+            logError('获取管理员名错误', [$e->getMessage()]);
+            return null;
+        }
+
+    }
 }

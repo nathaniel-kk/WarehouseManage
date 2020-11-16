@@ -25,3 +25,18 @@ Route::prefix('auth')->namespace('Auth')->group(function () {
     Route::post('refresh', 'AuthController@refresh'); //刷新token
     Route::post('register', 'AuthController@registered'); //注册接口
 });
+
+Route::prefix('lowadmin')->namespace('LowAdmin')->group(function () {
+    Route::post('writeshipment','ShipmentController@writeShipment');
+    Route::post('writeinventory','InventoryController@writeInventory');
+
+    Route::get('getform','FormController@getForm');
+  //  Route::get('deleterecode','FormController@deleteRecode');
+    Route::get('checkrecode','FormController@checkRecode');
+
+    Route::get('getcargo','CargoController@getCargo');
+    Route::get('checkcargo','CargoController@checkCargo');
+    Route::get('updatetype','CargoController@updateType');
+});
+
+
