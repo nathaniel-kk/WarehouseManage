@@ -10,7 +10,6 @@ class Form extends Model
     public $timestamps = true;
     protected $guarded = [];
 
-
     public static function dc_addShipmentrecode($warehouse_name,$id,$product_name,$time,$N){
         try {
             $date = self::create([
@@ -53,7 +52,7 @@ class Form extends Model
         }
 
     }
-//
+
 //    public static function dc_delectRecode($id){
 //        try {
 //            $date = self::where('recode_id',$id)
@@ -64,6 +63,7 @@ class Form extends Model
 //        }
 //
 //    }
+
 }
 
 
